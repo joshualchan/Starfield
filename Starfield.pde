@@ -1,7 +1,7 @@
 //your code here
 void setup()
 {
-	//your code here
+	size(500,500);
 }
 void draw()
 {
@@ -9,7 +9,21 @@ void draw()
 }
 class NormalParticle
 {
-	//your code here
+	int x,y;
+	double nSpeed;
+
+	NormalParticle()
+	{
+
+		x=
+	}
+
+
+	void show()
+	{
+		fill((int)(Math.random()*256));
+		ellipse(x,y,5,5);
+	}
 }
 interface Particle
 {
