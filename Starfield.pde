@@ -1,9 +1,9 @@
 //your code here
-NormalParticle [] norman;
+Particle [] norman;
 void setup()
 {
 	size(500,500);
-	norman = new NormalParticle[200];
+	norman = new Particle[200];
 	for(int i = 0; i<norman.length; i++)
 	{
 		norman[i] = new NormalParticle();
@@ -17,15 +17,14 @@ void draw()
 		norman[i].show();
 	}
 }
-class NormalParticle
+class NormalParticle implements Particle0
 {
 	int x,y;
 	double nSpeed;
 
 	NormalParticle()
 	{
-		fill(100)
-;
+		fill(100);
 		x = 250;
 		y = 250;
 
@@ -39,6 +38,7 @@ class NormalParticle
 	
 		ellipse(x,y,5,5);
 	}
+
 	void move()
 	{
 		
@@ -50,11 +50,21 @@ class NormalParticle
 }
 interface Particle
 {
-	//your code here
+	public void show();
+	public void move();
 }
-class OddballParticle //uses an interface
+class OddballParticle implements Particle //uses an interface
 {
-	//your code here
+	void show()
+	{
+
+	}
+
+	void move()
+	{
+
+	}
+
 }
 class JumboParticle //uses inheritance
 {
