@@ -1,11 +1,21 @@
 //your code here
+NormalParticle [] norman;
 void setup()
 {
 	size(500,500);
+	norman = new NormalParticle[200];
+	for(int i = 0; i<norman.length; i++)
+	{
+		norman[i] = new NormalParticle();
+	}
+
 }
 void draw()
 {
-	//your code here
+	for(int i =0;i<norman.length; i++)
+	{
+		norman[i].show();
+	}
 }
 class NormalParticle
 {
@@ -14,16 +24,29 @@ class NormalParticle
 
 	NormalParticle()
 	{
+		fill(100)
+;
+		x = 250;
+		y = 250;
 
-		x=
+		nSpeed = Math.random()*20;
+
 	}
 
 
 	void show()
 	{
-		fill((int)(Math.random()*256));
+	
 		ellipse(x,y,5,5);
 	}
+	void move()
+	{
+		
+	}
+
+
+
+
 }
 interface Particle
 {
