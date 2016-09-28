@@ -1,3 +1,5 @@
+//make oddball move
+
 //your code here
 Particle [] norman;
 void setup()
@@ -10,6 +12,7 @@ void setup()
 	}
 
 	norman[0] = new OddballParticle();
+	norman[1] = new JumboParticle();
 
 }
 void draw()
@@ -21,8 +24,7 @@ void draw()
 		norman[i].move();
 	}
 
-	norman[0].show();
-	norman[0].move();
+
 }
 
 
@@ -66,6 +68,9 @@ class NormalParticle implements Particle
 	{
 		x = x + Math.cos(nDirection) * nSpeed;
 		y = y + Math.sin(nDirection) * nSpeed;
+
+		nDirection = nDirection +.05;
+
 	}
 
 
@@ -104,8 +109,13 @@ class OddballParticle implements Particle //uses an interface
 	}
 
 }
-class JumboParticle //uses inheritance
+class JumboParticle extends NormalParticle//uses inheritance
 {
-	//your code here
+
+	void show()
+	{	
+		ellipse((int)x,(int)y,100,100);
+	}
+
 }
 
