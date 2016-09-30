@@ -47,7 +47,7 @@ class NormalParticle implements Particle
 
 	NormalParticle()
 	{
-		fill(100);
+		fill((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
 		x = 250.0;
 		y = 250.0;
 
@@ -69,7 +69,7 @@ class NormalParticle implements Particle
 		x = x + Math.cos(nDirection) * nSpeed;
 		y = y + Math.sin(nDirection) * nSpeed;
 
-		nDirection = nDirection +.05;
+		nDirection = nDirection +.075;
 
 	}
 
@@ -89,9 +89,9 @@ class OddballParticle implements Particle //uses an interface
 	int oX,oY;
 	OddballParticle()
 	{
-	fill((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
-	int oX = (int)(Math.random()*451);
-	int oY = (int)(Math.random()*451);
+	fill((int)(Math.random()*200),(int)(Math.random()*200),(int)(Math.random()*200));
+	int oX = 250;
+	int oY = 250;
 
 	}
 
@@ -105,10 +105,14 @@ class OddballParticle implements Particle //uses an interface
 
 	void move()
 	{
-
+		oX = oX +  (int)(Math.random()*3)-1;
+		oY = oY +  (int)(Math.random()*3)-1;
 	}
 
+
 }
+
+
 class JumboParticle extends NormalParticle//uses inheritance
 {
 
