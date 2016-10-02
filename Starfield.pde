@@ -1,4 +1,4 @@
-//make oddball move
+//why is oddball the same color
 
 //your code here
 Particle [] norman;
@@ -35,6 +35,14 @@ void mousePressed()
 }
 
 
+interface Particle
+{
+	public void show();
+	public void move();
+}
+
+
+
 class NormalParticle implements Particle
 {
 	double x,y;
@@ -58,13 +66,13 @@ class NormalParticle implements Particle
 
 	}
 
-	void show()
+	public void show()
 	{
 	
 		ellipse((int)x,(int)y,nSize,nSize);
 	}
 
-	void move()
+	public void move()
 	{
 		x = x + Math.cos(nDirection) * nSpeed;
 		y = y + Math.sin(nDirection) * nSpeed;
@@ -77,36 +85,31 @@ class NormalParticle implements Particle
 }
 
 
-interface Particle
-{
-	public void show();
-	public void move();
-}
 
 
 class OddballParticle implements Particle //uses an interface
 {
-	int oX,oY;
+	int x,y;
 	OddballParticle()
 	{
 	fill((int)(Math.random()*200),(int)(Math.random()*200),(int)(Math.random()*200));
-	int oX = 250;
-	int oY = 250;
+	x = 250;
+	y = 250;
 
 	}
 
-	void show()
+	public void show()
 	{
 		
-		ellipse(oX,oY,50,50);
+		ellipse(x,y,50,50);
 
 
 	}
 
-	void move()
+	public void move()
 	{
-		oX = oX +  (int)(Math.random()*3)-1;
-		oY = oY +  (int)(Math.random()*3)-1;
+		x = x +  (int)(Math.random()*3)-1;
+		y = y +  (int)(Math.random()*3)-1;
 	}
 
 
