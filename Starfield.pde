@@ -1,7 +1,10 @@
-//why is oddball the same color
+//JUMbO AND odDBAll Same color
+//oddball,jumbo same color
+
 
 //your code here
 Particle [] norman;
+int nextOdd = 2;
 void setup()
 {
 	size(500,500);
@@ -24,14 +27,25 @@ void draw()
 		norman[i].move();
 	}
 
-
 }
 
 
 void mousePressed()
 {
-	setup();
-	redraw();
+	if(mouseButton == LEFT){
+		
+		norman[nextOdd] = new OddballParticle();
+		nextOdd = nextOdd + 1;
+
+	}
+
+	
+
+	if(mouseButton == RIGHT){
+		setup();
+		draw();
+	}
+
 }
 
 
@@ -41,8 +55,6 @@ interface Particle
 	public void move();
 }
 
-
-
 class NormalParticle implements Particle
 {
 	double x,y;
@@ -50,12 +62,12 @@ class NormalParticle implements Particle
 	//velocity: speed in a given diection
 
 	double nSpeed, nDirection;
-	int nSize;
+	int nSize, nColor, myColor;
 
 
 	NormalParticle()
 	{
-		fill((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
+		myColor = color((int)(Math.random()*200),(int)(Math.random()*200),(int)(Math.random()*200));
 		x = 250.0;
 		y = 250.0;
 
@@ -66,13 +78,13 @@ class NormalParticle implements Particle
 
 	}
 
-	public void show()
+	void show()
 	{
-	
+		fill(myColor);
 		ellipse((int)x,(int)y,nSize,nSize);
 	}
 
-	public void move()
+	void move()
 	{
 		x = x + Math.cos(nDirection) * nSpeed;
 		y = y + Math.sin(nDirection) * nSpeed;
@@ -89,27 +101,70 @@ class NormalParticle implements Particle
 
 class OddballParticle implements Particle //uses an interface
 {
-	int x,y;
+	double oX,oY;
+	double oSpeed, oDirection;
+	int oColor;
 	OddballParticle()
 	{
-	fill((int)(Math.random()*200),(int)(Math.random()*200),(int)(Math.random()*200));
-	x = 250;
-	y = 250;
+	oColor = color((int)(Math.random()*256));
+	oX = 250.0;
+	oY = 250.0;
+	oSpeed = Math.random()*2;
+	oDirection = Math.random()*2*Math.PI;
+	}
+
+	void show()
+	{
+		fill(oColor);
+		ellipse((int)oX,(int)oY,50,50);
+
 
 	}
 
-	public void show()
+	void move()
 	{
-		
-		ellipse(x,y,50,50);
 
+		oX = oX +  Math.cos(oDirection) * oSpeed;
+		oY = oY +  Math.sin(oDirection) * oSpeed;
 
-	}
+		if(oX>500)
+		{
+			oDirection = Math.random()*2*Math.PI;
+			if(oDirection< .5*Math.PI || oDirection>1.5*Math.PI )
+			{
+				oDirection = oDirection + Math.PI;
+			}
+			oX = oX +  Math.cos(oDirection) * oSpeed;
+		}
+		if(oX<0)
+		{
+			oDirection = Math.random()*2*Math.PI;
+			if(oDirection> .5*Math.PI && oDirection<1.5*Math.PI )
+			{
+				oDirection = oDirection + Math.PI;
+			}
+			oX = oX +  Math.cos(oDirection) * oSpeed;
 
-	public void move()
-	{
-		x = x +  (int)(Math.random()*3)-1;
-		y = y +  (int)(Math.random()*3)-1;
+		}
+		if(oY>500)
+		{
+			oDirection = Math.random()*2*Math.PI;
+			if(oDirection< Math.PI )
+			{
+				oDirection = oDirection + Math.PI;
+			}
+			oY = oY +  Math.sin(oDirection) * oSpeed;
+
+		}
+		if(oY<0)
+		{
+			oDirection = Math.random()*2*Math.PI;
+			if(oDirection> Math.PI)
+			{
+				oDirection = oDirection + Math.PI;
+			}
+			oY = oY +  Math.sin(oDirection) * oSpeed;
+		}
 	}
 
 
@@ -121,6 +176,7 @@ class JumboParticle extends NormalParticle//uses inheritance
 
 	void show()
 	{	
+		fill(myColor);
 		ellipse((int)x,(int)y,100,100);
 	}
 
