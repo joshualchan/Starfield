@@ -109,7 +109,7 @@ class OddballParticle implements Particle //uses an interface
 	oColor = color((int)(Math.random()*256));
 	oX = 250.0;
 	oY = 250.0;
-	oSpeed = Math.random()*2;
+	oSpeed = Math.random()*2+.5;
 	oDirection = Math.random()*2*Math.PI;
 	}
 
@@ -127,7 +127,7 @@ class OddballParticle implements Particle //uses an interface
 		oX = oX +  Math.cos(oDirection) * oSpeed;
 		oY = oY +  Math.sin(oDirection) * oSpeed;
 
-		if(oX>500)
+		if(oX>475)
 		{
 			oDirection = Math.random()*2*Math.PI;
 			if(oDirection< .5*Math.PI || oDirection>1.5*Math.PI )
@@ -136,7 +136,7 @@ class OddballParticle implements Particle //uses an interface
 			}
 			oX = oX +  Math.cos(oDirection) * oSpeed;
 		}
-		if(oX<0)
+		if(oX<25)
 		{
 			oDirection = Math.random()*2*Math.PI;
 			if(oDirection> .5*Math.PI && oDirection<1.5*Math.PI )
@@ -146,7 +146,7 @@ class OddballParticle implements Particle //uses an interface
 			oX = oX +  Math.cos(oDirection) * oSpeed;
 
 		}
-		if(oY>500)
+		if(oY>475)
 		{
 			oDirection = Math.random()*2*Math.PI;
 			if(oDirection< Math.PI )
@@ -156,7 +156,7 @@ class OddballParticle implements Particle //uses an interface
 			oY = oY +  Math.sin(oDirection) * oSpeed;
 
 		}
-		if(oY<0)
+		if(oY<25)
 		{
 			oDirection = Math.random()*2*Math.PI;
 			if(oDirection> Math.PI)
